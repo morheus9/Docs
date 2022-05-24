@@ -11,7 +11,7 @@ sudo apt upgrade
 1) Login with your user (not root) and add sudo:
 
 ```
-usermod -aG sudo pi_user
+usermod -aG sudo pi
 ```
 
 2) Change your hosts file
