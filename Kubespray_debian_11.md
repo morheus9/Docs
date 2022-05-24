@@ -104,7 +104,7 @@ sudo nano inventory/mycluster/group_vars/all/all.yml
 ansible-playbook -i inventory/mycluster/inventory.ini --become --user=pin --become-user=root cluster.yml
 ```
 
-## Step 4: Create your cluster on master:
+## Step 4: Check your cluster on the master:
 
 ```
 sudo kubectl get nodes
