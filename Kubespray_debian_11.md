@@ -6,7 +6,7 @@ sudo apt upgrade
 ```
 
 
-## Step 2: Prepare your ansible master-machine.
+## Step 2: Prepare your ansible master-machine:
 
 1) Login with your user (not root) and add sudo:
 
