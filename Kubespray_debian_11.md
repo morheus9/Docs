@@ -7,4 +7,63 @@
 
 # Step 2: Prepare your ansible master-machine.
 
-1) Login with your user (not root)
+1) Login with your user (not root) and add sudo:
+
+usermod -aG sudo pi_user
+
+2) Create keys:
+
+ssh-keygen
+
+3) Clone kubespray and install dependencies:
+
+cd ~
+git clone https://github.com/kubernetes-sigs/kubespray.git
+cd kubespray
+sudo apt install python3-pip
+sudo pip3 install -r requirements.txt
+ansible --version
+
+4) Create your directory of inventory:
+cp -rfp inventory/sample inventory/mycluster
+
+5) Change servers
+sudo nano inventory/mycluster/inventory.ini
+
+Example: 
+
+# ## Configure 'ip' variable to bind kubernetes services on a
+# ## different ip than the default iface
+# ## We should set etcd_member_name for etcd cluster. The node that is not a etcd member do not need to set the value, or can set the empty string value.
+[all]
+master0   ansible_host=51.250.111.74       ansible_user=pin
+worker1   ansible_host=84.252.142.192      ansible_user=pin
+worker2   ansible_host=84.252.136.96       ansible_user=pin
+# ## configure a bastion host if your nodes are not directly reachable
+# [bastion]
+# bastion ansible_host=x.x.x.x ansible_user=some_user
+[kube_control_plane]
+master0
+
+[etcd]
+master0
+
+[kube_node]
+worker1
+worker2
+
+[calico_rr]
+
+[k8s_cluster:children]
+kube_control_plane
+kube_node
+calico_rr
+
+6) Change your hosts file
+sudo nano /etc/hosts
+
+Example: 
+
+51.250.111.74   master0
+84.252.142.192  worker1
+84.252.136.96   worker2
