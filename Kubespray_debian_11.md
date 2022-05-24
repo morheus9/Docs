@@ -104,13 +104,13 @@ sudo nano inventory/mycluster/group_vars/all/all.yml
 ansible-playbook -i inventory/mycluster/inventory.ini --become --user=pin --become-user=root cluster.yml
 ```
 
-## Step 4: Check your cluster on the master:
+Check your cluster on the master: 
 
 ```
 sudo kubectl get nodes
 ```
 
-## Step 5: Install Kubernetes Dashboard:
+## Step 4: Install Kubernetes Dashboard:
 
-## Step 6: Install Nginx-Ingress controller:
+## Step 5: Install Nginx-Ingress controller:
 
