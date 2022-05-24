@@ -14,7 +14,7 @@ sudo apt upgrade
 usermod -aG sudo pi
 ```
 
-2) Change your hosts file
+2) Change your hosts file:
 
 ```
 sudo nano /etc/hosts
@@ -109,3 +109,8 @@ ansible-playbook -i inventory/mycluster/inventory.ini --become --user=pin --beco
 ```
 sudo kubectl get nodes
 ```
+
+## Step 5: Install Kubernetes Dashboard:
+
+## Step 6: Install Nginx-Ingress controller:
+
