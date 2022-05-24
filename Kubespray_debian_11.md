@@ -5,7 +5,7 @@ sudo apt upgrade
 ```
 
 
-# Step 2: Prepare your ansible master-machine.
+## Step 2: Prepare your ansible master-machine.
 
 1) Login with your user (not root) and add sudo:
 ```
@@ -75,7 +75,7 @@ calico_rr
 sudo nano inventory/mycluster/group_vars/k8s-cluster/k8s-cluster.yml
 sudo nano inventory/mycluster/group_vars/all/all.yml
 ```
-# Step 3: Create your cluster:
+## Step 3: Create your cluster:
 ```
 ansible-playbook -i inventory/mycluster/inventory.ini --become --user=pin --become-user=root cluster.yml
 ```
