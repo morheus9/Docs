@@ -58,13 +58,16 @@ Example:
 # ## Configure 'ip' variable to bind kubernetes services on a
 # ## different ip than the default iface
 # ## We should set etcd_member_name for etcd cluster. The node that is not a etcd member do not need to set the value, or can set the empty string value.
+
 [all]
 master0   ansible_host=51.250.111.74       ansible_user=pin
 worker1   ansible_host=84.252.142.192      ansible_user=pin
 worker2   ansible_host=84.252.136.96       ansible_user=pin
+
 # ## configure a bastion host if your nodes are not directly reachable
 # [bastion]
 # bastion ansible_host=x.x.x.x ansible_user=some_user
+
 [kube_control_plane]
 master0
 
