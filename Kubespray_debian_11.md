@@ -1,8 +1,8 @@
-# Step 1: Prepare your servers.
-
+# Step 1: Prepare your servers:
+```
 - sudo apt update
 - sudo apt upgrade
-
+```
 
 
 # Step 2: Prepare your ansible master-machine.
@@ -11,11 +11,20 @@
 
 usermod -aG sudo pi_user
 
-2) Create keys:
+2) Change your hosts file
+sudo nano /etc/hosts
+
+Example: 
+
+51.250.111.74   master0
+84.252.142.192  worker1
+84.252.136.96   worker2
+
+3) Create keys:
 
 ssh-keygen
 
-3) Clone kubespray and install dependencies:
+4) Clone kubespray and install dependencies:
 
 cd ~
 git clone https://github.com/kubernetes-sigs/kubespray.git
@@ -24,10 +33,12 @@ sudo apt install python3-pip
 sudo pip3 install -r requirements.txt
 ansible --version
 
-4) Create your directory of inventory:
+5) Create your directory of inventory:
+
 cp -rfp inventory/sample inventory/mycluster
 
-5) Change servers
+6) Change servers in the inventory:
+
 sudo nano inventory/mycluster/inventory.ini
 
 Example: 
@@ -59,11 +70,13 @@ kube_control_plane
 kube_node
 calico_rr
 
-6) Change your hosts file
-sudo nano /etc/hosts
+7) Change settings of the cluster:
 
-Example: 
+sudo nano inventory/mycluster/group_vars/k8s-cluster/k8s-cluster.yml
+sudo nano inventory/mycluster/group_vars/all/all.yml
 
-51.250.111.74   master0
-84.252.142.192  worker1
-84.252.136.96   worker2
+# Step 3: Create your cluster:
+
+ansible-playbook -i inventory/mycluster/inventory.ini --become --user=pin --become-user=root cluster.yml
+
+
