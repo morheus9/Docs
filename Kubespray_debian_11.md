@@ -25,10 +25,13 @@ sudo nano /etc/hosts
 84.252.136.96   worker2
 ```
 
-3) Create keys:
+3) Create and add keys to remote hosts:
 
 ```
 ssh-keygen
+ssh-copy-id pin@master0
+ssh-copy-id pin@worker1
+ssh-copy-id pin@worker2
 ```
 
 4) Clone kubespray and install dependencies:
