@@ -15,8 +15,10 @@ usermod -aG sudo pi_user
 ```
 
 2) Change your hosts file
-sudo nano /etc/hosts
 
+```
+sudo nano /etc/hosts
+```
 ```
 51.250.111.74   master0
 84.252.142.192  worker1
