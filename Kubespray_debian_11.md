@@ -25,7 +25,7 @@ sudo nano /etc/hosts
 84.252.136.96   worker2
 ```
 
-3) Create and add keys to remote hosts:
+3) Create and add keys to remote hosts (from not root user!):
 
 ```
 ssh-keygen
