@@ -168,7 +168,3 @@ cat nodeport_dashboard_patch.yaml
 ```
 
 kubectl -n kubernetes-dashboard patch svc kubernetes-dashboard --patch "$(cat nodeport_dashboard_patch.yaml)"
-
-
-## Step 6: Install Nginx-Ingress controller:
-
