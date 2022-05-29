@@ -137,34 +137,10 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4
 ```
 
-## Step 5: Install Kubernetes Dashboard:
+## Step 5: Install ingress Nginx:
 
-```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml
-```
 
-Check your dashboard on the master:
 
-```
-kubectl get svc -n kubernetes-dashboard
-```
+## Step 6: Install Kubernetes Dashboard:
 
-Patch the service to have it listen on NodePort:
 
-```
-kubectl --namespace kubernetes-dashboard patch svc kubernetes-dashboard -p '{"spec": {"type": "NodePort"}}'
-```
-
-Confirm the new setting:
-
-```
-kubectl get svc -n kubernetes-dashboard kubernetes-dashboard -o yaml
-```
-
-NodePort exposes the Service on each Node’s IP at a static port (the NodePort). A ClusterIP Service, to which the NodePort Service routes, is automatically created:
-
-```
-cat nodeport_dashboard_patch.yaml
-```
-
-kubectl -n kubernetes-dashboard patch svc kubernetes-dashboard --patch "$(cat nodeport_dashboard_patch.yaml)"
