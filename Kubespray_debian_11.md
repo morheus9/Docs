@@ -3,6 +3,7 @@
 ```
 sudo apt update
 sudo apt upgrade
+sudo apt install sshpass
 ```
 
 
@@ -65,9 +66,15 @@ Example:
 # ## We should set etcd_member_name for etcd cluster. The node that is not a etcd member do not need to set the value, or can set the empty string value.
 
 [all]
-master0   ansible_host=51.250.111.74       ansible_user=pin
-worker1   ansible_host=84.252.142.192      ansible_user=pin
-worker2   ansible_host=84.252.136.96       ansible_user=pin
+master0   ansible_host=51.250.111.74       ansible_user=pin      ansible_sudo_pass=951753
+worker1   ansible_host=84.252.142.192      ansible_user=pin      ansible_sudo_pass=951753
+worker2   ansible_host=84.252.136.96       ansible_user=pin      ansible_sudo_pass= !vault |
+                                                              $ANSIBLE_VAULT;1.2;AES256;dev
+                                                              37636561366636643464376336303466613062633537323632306566653533383833366462366662
+                                                              6565353063303065303831323539656138653863353230620a653638643639333133306331336365
+                                                              62373737623337616130386137373461306535383538373162316263386165376131623631323434
+                                                              3866363862363335620a376466656164383032633338306162326639643635663936623939666238
+                                                              3161
 
 # ## configure a bastion host if your nodes are not directly reachable
 # [bastion]
